@@ -1,0 +1,30 @@
+workflows:
+  build:
+    name: Build
+    instance_type: mac_pro
+    max_build_duration: 60
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: '*'
+          include: true
+          source: true
+    cache:
+      cache_paths:
+        - buck-out/cache
+    scripts:
+      - name: Install Buck
+        script: |-
+          #!/usr/bin/env bash
+          # fail if any commands fails
+          set -e
+          # debug log
+          set -x
+          
+          rm -rf bin/buck
+          curl https://jitpack.io/com/github/traveloka/buck/08d9dd49530f16d86f166b67324c5e0b12fcf606/buck-08d9dd49530f16d86f166b67324c5e0b12fcf606.pex --output bin/buck
+          chmod u+x bin/buck
+      - name: Buck Build
+        script: NO_BUCKD=1 bin/buck build buck
