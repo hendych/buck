@@ -15,6 +15,8 @@ workflows:
       cache_paths:
         - buck-out/cache
     scripts:
+      - name: Run Ant
+        script: ant
       - name: Install Buck
         script: |-
           #!/usr/bin/env bash
