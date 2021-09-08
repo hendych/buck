@@ -24,7 +24,7 @@ workflows:
           set -x
           
           rm -rf bin/buck
-          curl https://jitpack.io/com/github/traveloka/buck/08d9dd49530f16d86f166b67324c5e0b12fcf606/buck-08d9dd49530f16d86f166b67324c5e0b12fcf606.pex --output bin/buck
+          curl https://jitpack.io/com/github/traveloka/buck/477c9b99be3dae1c48bc6c9c4bc9e114ad9f5f56/477c9b99be3dae1c48bc6c9c4bc9e114ad9f5f56-java11.pex --output bin/buck
           chmod u+x bin/buck
       - name: Buck Build
         script: NO_BUCKD=1 bin/buck build buck
