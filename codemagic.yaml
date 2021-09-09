@@ -18,7 +18,7 @@ workflows:
       - name: Run Ant
         script: ant
       - name: Install Buck
-        script: |-
+        script: |
           #!/usr/bin/env bash
           # fail if any commands fails
           set -e
@@ -26,7 +26,7 @@ workflows:
           set -x
           
           rm -rf bin/buck
-          curl https://jitpack.io/com/github/traveloka/buck/477c9b99be3dae1c48bc6c9c4bc9e114ad9f5f56/477c9b99be3dae1c48bc6c9c4bc9e114ad9f5f56-java11.pex --output bin/buck
+          curl https://jitpack.io/com/github/facebook/buck/577c273d9746e42769e5dbb7bb5a092ba3ec82c2/buck-577c273d9746e42769e5dbb7bb5a092ba3ec82c2-java11.pex --output bin/buck
           chmod u+x bin/buck
       - name: Buck Build
         script: NO_BUCKD=1 bin/buck build buck
