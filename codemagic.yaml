@@ -13,7 +13,7 @@ workflows:
           source: true
     cache:
       cache_paths:
-        - buck-out/cache
+        - /Users/builder/clone/buck-out/cache
     scripts:
       - name: Run Ant
         script: ant
@@ -30,3 +30,5 @@ workflows:
           chmod u+x bin/buck
       - name: Buck Build
         script: NO_BUCKD=1 bin/buck build buck
+    artifacts:
+      - buck-out/gen/**/programs/buck.pex
