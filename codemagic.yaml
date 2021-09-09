@@ -17,7 +17,16 @@ workflows:
         - /Users/builder/clone/ant-out
     scripts:
       - name: Run Ant
-        script: ant
+        script: | 
+          #!/usr/bin/env bash
+          # fail if any commands fails
+          set -e
+          # debug log
+          set -x
+          
+          if [[ ! -d "ant-out" ]]; then
+            ant
+          fi
       - name: Install Buck
         script: |
           #!/usr/bin/env bash
